@@ -1,4 +1,4 @@
 echo "Hello from Jenkins"
-echo "Running DevOps Builds"
+echo "Running DevOps Builds ..."
 date
 whoami
