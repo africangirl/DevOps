@@ -1,0 +1,29 @@
+pipeline{
+    agent any
+    stages{
+        stage ('Checkout'){
+            steps{
+                echo "Getting code from GitHub"
+            }
+        }
+
+        stage ('Build'){
+            steps{
+                sh 'chmod +x first.sh'
+                sh './first.sh'
+            }
+        }
+
+        stage ('Test'){
+            steps{
+                echo "Running tests"
+            }
+        }
+
+        stage ("Deploy"){
+            steps{
+                echo "Deploying application"
+            }
+        }
+    }
+}
