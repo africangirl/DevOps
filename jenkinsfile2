@@ -9,13 +9,13 @@ pipeline{
 
         stage ('Build Docker Image'){
             steps{
-                sh 'docker build -t myapp .'
+                sh 'docker build -t docker-demo .'
             }
         }
 
         stage('Run Container') {
             steps {
-                sh 'docker run --rm  myapp'
+                sh 'docker run --rm  docker-demo'
             }
         }
 
