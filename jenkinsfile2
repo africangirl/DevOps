@@ -7,10 +7,15 @@ pipeline{
             }
         }
 
-        stage ('Build'){
+        stage ('Build Docker Image'){
             steps{
-                sh 'chmod +x first.sh'
-                sh './first.sh'
+                sh 'docker build -t myapp .'
+            }
+        }
+
+        stage('Run Container') {
+            steps {
+                sh 'docker run --rm  myapp'
             }
         }
 

@@ -6,4 +6,6 @@ echo "Starting ..."
 echo "1, 2, 3 ..."
 date
 whoami
+user
+id
 echo "Jenkins received my webhook"
