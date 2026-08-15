@@ -7,17 +7,35 @@ pipeline{
             }
         }
 
-        stage ('Build Docker Image'){
+        // stage ('Build Docker Image'){
+        //     steps{
+        //         sh 'docker build -t docker-demo .'
+        //     }
+        // }
+
+        // stage('Run Container') {
+        //     steps {
+        //         sh 'docker run --rm  docker-demo'
+        //     }
+        // }
+
+        stage ('Docker Build'){
             steps{
-                sh 'docker build -t docker-demo .'
+                sh 'docker build -t oforiwaa/devops-demo:latest .'
             }
         }
 
-        stage('Run Container') {
-            steps {
-                sh 'docker run --rm  docker-demo'
+        stage ('Docker Push'){
+            steps{
+                sh 'docker push oforiwaa/devops-demo:latest'
+                }
             }
-        }
+
+            stage ('Docker Run'){
+                steps{
+                    sh 'docker run --rm oforiwaa/devops-demo:latest'
+                }
+            }
 
         stage ('Test'){
             steps{
