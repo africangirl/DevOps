@@ -27,7 +27,12 @@ pipeline{
 
         stage ('Docker Push'){
             steps{
-                sh 'docker push oforiwaa/devops-demo:latest'
+                withCredentials([usernamePassword(credentialsId: 'dockerhub-credentials', passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_USERNAME')]) {
+                    sh '''
+                    echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
+                    docker push  "oforiwaa/devops-demo:latest"
+                    docker logout
+                    '''
                 }
             }
 
